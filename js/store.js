@@ -10,7 +10,7 @@ const RS_STORE = (() => {
   "use strict";
 
   const WA_NUMBER = "0895616765522";
-  const WA_INTERNATIONAL = "6285616765522";
+  const WA_INTERNATIONAL = "62895616765522";
   const KEYS = {
     portfolios: "rsdp_portfolios_v1",
     transactions: "rsdp_transactions_v1",
