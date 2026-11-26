@@ -1,0 +1,442 @@
+/* ==================================================================
+   custom.css — RS Digital Printing
+   Seluruh warna utama bisa diubah lewat CSS variables di bawah ini
+   agar mudah disesuaikan dengan desain Figma final.
+   ================================================================== */
+
+:root {
+  --rs-primary: #f97316;
+  --rs-primary-dark: #c2410c;
+  --rs-primary-soft: #ffedd5;
+  --rs-ink: #0f172a;
+  --rs-ink-soft: #334155;
+  --rs-muted: #64748b;
+  --rs-line: #e2e8f0;
+  --rs-surface: #ffffff;
+  --rs-bg: #fffaf5;
+  --rs-accent: #0ea5e9;
+  --rs-success: #16a34a;
+  --rs-radius: 18px;
+  --rs-shadow: 0 18px 45px -20px rgba(15, 23, 42, 0.28);
+  --rs-shadow-sm: 0 8px 24px -14px rgba(15, 23, 42, 0.3);
+  --rs-font: "Plus Jakarta Sans", "Inter", system-ui, -apple-system, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--rs-font);
+  color: var(--rs-ink);
+  background: var(--rs-bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--rs-primary);
+  color: #fff;
+}
+
+.rs-container {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .rs-container { padding-inline: 2rem; }
+}
+
+/* ------------------------------------------------------------------ */
+/* Komponen umum                                                       */
+/* ------------------------------------------------------------------ */
+
+.rs-gradient-text {
+  background: linear-gradient(100deg, var(--rs-primary-dark), var(--rs-primary) 55%, #fbbf24);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.rs-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  padding: 0.75rem 1.4rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+  line-height: 1;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+  cursor: pointer;
+  border: 0;
+  text-decoration: none;
+}
+
+.rs-btn:hover { transform: translateY(-2px); }
+.rs-btn:active { transform: translateY(0); }
+.rs-btn:focus-visible { outline: 3px solid var(--rs-accent); outline-offset: 3px; }
+
+.rs-btn-primary {
+  background: var(--rs-primary);
+  color: #fff;
+  box-shadow: 0 12px 24px -12px var(--rs-primary);
+}
+.rs-btn-primary:hover { background: var(--rs-primary-dark); box-shadow: 0 16px 30px -12px var(--rs-primary); }
+
+.rs-btn-dark {
+  background: var(--rs-ink);
+  color: #fff;
+}
+.rs-btn-dark:hover { background: #1e293b; }
+
+.rs-btn-wa {
+  background: #25d366;
+  color: #062e18;
+}
+.rs-btn-wa:hover { background: #1ebc58; }
+
+.rs-btn-outline {
+  background: transparent;
+  color: var(--rs-ink);
+  border: 1.5px solid var(--rs-line);
+}
+.rs-btn-outline:hover { border-color: var(--rs-primary); color: var(--rs-primary-dark); }
+
+.rs-btn-sm { padding: 0.5rem 0.9rem; font-size: 0.78rem; }
+
+.rs-card {
+  background: var(--rs-surface);
+  border: 1px solid var(--rs-line);
+  border-radius: var(--rs-radius);
+  box-shadow: var(--rs-shadow-sm);
+}
+
+.rs-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border-radius: 999px;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: var(--rs-primary-soft);
+  color: var(--rs-primary-dark);
+}
+
+.rs-section { padding-block: 4.5rem; }
+@media (min-width: 768px) { .rs-section { padding-block: 6rem; } }
+
+.rs-section-title {
+  font-size: clamp(1.8rem, 4vw, 2.75rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.15;
+}
+
+.rs-eyebrow {
+  color: var(--rs-primary-dark);
+  font-weight: 800;
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+/* ------------------------------------------------------------------ */
+/* Navbar                                                              */
+/* ------------------------------------------------------------------ */
+
+.rs-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.86);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.rs-nav-link {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--rs-ink-soft);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+.rs-nav-link:hover { color: var(--rs-primary-dark); }
+
+/* ------------------------------------------------------------------ */
+/* Hero                                                                */
+/* ------------------------------------------------------------------ */
+
+.rs-hero {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(249, 115, 22, 0.16), transparent 42%),
+    radial-gradient(circle at 88% 8%, rgba(14, 165, 233, 0.14), transparent 38%),
+    linear-gradient(180deg, #fffaf5 0%, #fff 100%);
+}
+
+.rs-hero::after {
+  content: "";
+  position: absolute;
+  inset: auto -10% -60% -10%;
+  height: 220px;
+  background: radial-gradient(ellipse at center, rgba(249, 115, 22, 0.12), transparent 70%);
+  pointer-events: none;
+}
+
+.rs-hero-blob {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(2px);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* ------------------------------------------------------------------ */
+/* Filter & kartu portofolio                                           */
+/* ------------------------------------------------------------------ */
+
+.rs-filter-btn {
+  white-space: nowrap;
+  border-radius: 999px;
+  padding: 0.6rem 1.1rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--rs-muted);
+  background: #fff;
+  border: 1.5px solid var(--rs-line);
+  transition: all 0.16s ease;
+  cursor: pointer;
+}
+.rs-filter-btn:hover { color: var(--rs-primary-dark); border-color: var(--rs-primary); }
+.rs-filter-btn.is-active {
+  color: #fff;
+  background: var(--rs-ink);
+  border-color: var(--rs-ink);
+  box-shadow: var(--rs-shadow-sm);
+}
+
+.rs-portfolio-card {
+  overflow: hidden;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+  display: flex;
+  flex-direction: column;
+}
+.rs-portfolio-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--rs-shadow);
+}
+.rs-portfolio-card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+.rs-portfolio-card:hover img { transform: scale(1.05); }
+
+.rs-sku {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--rs-primary-dark);
+  background: var(--rs-primary-soft);
+  border-radius: 6px;
+  padding: 0.2rem 0.45rem;
+}
+
+/* ------------------------------------------------------------------ */
+/* Modal                                                               */
+/* ------------------------------------------------------------------ */
+
+.rs-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(6px);
+}
+.rs-modal-overlay.is-open { display: flex; }
+
+.rs-modal {
+  width: 100%;
+  max-width: 540px;
+  max-height: 92vh;
+  overflow-y: auto;
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 30px 80px -20px rgba(15, 23, 42, 0.5);
+  animation: rsModalIn 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.rs-modal-lg { max-width: 620px; }
+
+@keyframes rsModalIn {
+  from { opacity: 0; transform: translateY(18px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.rs-field-label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--rs-ink-soft);
+  margin-bottom: 0.35rem;
+}
+.rs-field {
+  width: 100%;
+  border: 1.5px solid var(--rs-line);
+  border-radius: 12px;
+  padding: 0.7rem 0.85rem;
+  font-size: 0.9rem;
+  font-family: var(--rs-font);
+  color: var(--rs-ink);
+  background: #fff;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.rs-field:focus {
+  outline: none;
+  border-color: var(--rs-primary);
+  box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.12);
+}
+textarea.rs-field { resize: vertical; min-height: 76px; }
+
+/* ------------------------------------------------------------------ */
+/* QRIS simulator                                                      */
+/* ------------------------------------------------------------------ */
+
+.rs-qris-frame {
+  background: linear-gradient(145deg, #f8fafc, #fff);
+  border: 2px dashed var(--rs-line);
+  border-radius: 18px;
+  padding: 1.25rem;
+}
+.rs-qris-code {
+  background: #fff;
+  padding: 0.75rem;
+  border-radius: 12px;
+  box-shadow: inset 0 0 0 1px var(--rs-line);
+}
+.rs-qris-code svg { display: block; width: 100%; height: auto; }
+
+/* ------------------------------------------------------------------ */
+/* Admin panel                                                         */
+/* ------------------------------------------------------------------ */
+
+.rs-admin-body { background: #f1f5f9; }
+
+.rs-admin-sidebar {
+  width: 250px;
+  background: var(--rs-ink);
+  color: #cbd5e1;
+  flex-shrink: 0;
+}
+.rs-admin-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.7rem 0.9rem;
+  border-radius: 10px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #cbd5e1;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.rs-admin-nav-item:hover { background: rgba(255, 255, 255, 0.08); color: #fff; }
+.rs-admin-nav-item.is-active { background: var(--rs-primary); color: #fff; }
+
+.rs-stat-card {
+  background: #fff;
+  border: 1px solid var(--rs-line);
+  border-radius: 16px;
+  padding: 1.25rem;
+  box-shadow: var(--rs-shadow-sm);
+}
+
+.rs-table-wrap { overflow-x: auto; }
+.rs-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; min-width: 720px; }
+.rs-table th {
+  text-align: left;
+  padding: 0.8rem 1rem;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--rs-muted);
+  background: #f8fafc;
+  white-space: nowrap;
+}
+.rs-table td { padding: 0.85rem 1rem; border-top: 1px solid var(--rs-line); vertical-align: middle; }
+.rs-table tr:hover td { background: #fffaf5; }
+
+.rs-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  border-radius: 999px;
+  padding: 0.25rem 0.6rem;
+  font-size: 0.7rem;
+  font-weight: 800;
+}
+.rs-status-BARU { background: #fef3c7; color: #92400e; }
+.rs-status-DESAIN { background: #dbeafe; color: #1e40af; }
+.rs-status-CETAK { background: #ede9fe; color: #5b21b6; }
+.rs-status-SELESAI { background: #dcfce7; color: #166534; }
+
+/* ------------------------------------------------------------------ */
+/* Utilitas tambahan                                                   */
+/* ------------------------------------------------------------------ */
+
+.rs-hide { display: none !important; }
+
+.rs-marquee-track {
+  display: flex;
+  gap: 3rem;
+  width: max-content;
+  animation: rsMarquee 28s linear infinite;
+}
+@keyframes rsMarquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.rs-fade-up { animation: rsFadeUp 0.5s ease both; }
+@keyframes rsFadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.rs-scroll::-webkit-scrollbar { width: 8px; height: 8px; }
+.rs-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 99px; }
+.rs-scroll::-webkit-scrollbar-track { background: transparent; }
+
+/* ------------------------------------------------------------------ */
+/* Cetak struk                                                         */
+/* ------------------------------------------------------------------ */
+
+@media print {
+  .rs-no-print { display: none !important; }
+  body { background: #fff; }
+  .rs-modal-overlay { position: static; background: #fff; display: block; padding: 0; }
+  .rs-modal { box-shadow: none; max-width: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
